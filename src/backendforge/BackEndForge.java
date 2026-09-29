@@ -17,8 +17,22 @@ public class BackEndForge {
         catch(SQLException e) {
              System.out.println(e.getMessage());
         }
-       Utilisateur utilisateur1 = new Utilisateur("jul" ,"jul@live.fr" , "123456","123456",41,"H") ;
+       Utilisateur utilisateur1 = new Utilisateur(
+        "jul",
+        "jul@live.fr",
+        "123456",
+        "123456",
+        41,
+        "H"
+);
+try {
+    UtilisateurRepository.ajouterUtilisateur(utilisateur1);
 
+    System.out.println("Utilisateur enregistré");
+
+} catch (SQLException e) {
+    System.out.println(e.getMessage());
+}
        System.out.println(utilisateur1.getId()) ;
        System.out.println(utilisateur1.getPseudo()) ;
        System.out.println(utilisateur1.getEmail()) ;
