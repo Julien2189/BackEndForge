@@ -3,6 +3,8 @@ package backendforge;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.ResultSet ;
 
 public class UtilisateurRepository {
 
@@ -17,7 +19,10 @@ public class UtilisateurRepository {
         Connection connexion = ConnexionBDD.getConnection();
 
         PreparedStatement statement =
-                connexion.prepareStatement(sql);
+                connexion.prepareStatement(
+                        sql,
+                        Statement.RETURN_GENERATED_KEYS
+                );
 
         statement.setString(1, utilisateur.getPseudo());
         statement.setString(2, utilisateur.getEmail());
@@ -26,7 +31,12 @@ public class UtilisateurRepository {
         statement.setString(5, utilisateur.getSexe());
 
         statement.executeUpdate();
-
+        ResultSet generatedKeys = statement.getGeneratedKeys() ;
+        if(generatedKeys.next()) {
+            int idGenere = generatedKeys.getInt(1) ;
+            utilisateur.setId(idGenere);
+        }
+        generatedKeys.close();
         statement.close();
         connexion.close();
     }

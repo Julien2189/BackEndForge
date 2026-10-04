@@ -88,4 +88,8 @@ public class Utilisateur {
         return sexe;
     }
     
+    public void setId(int id) {
+        this.id = id ;
+    }
+    
 }
