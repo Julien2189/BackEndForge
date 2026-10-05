@@ -40,4 +40,22 @@ public class UtilisateurRepository {
         statement.close();
         connexion.close();
     }
+    
+    public static void chercherParEmail(String email) throws SQLException{
+        String sql = "SELECT * FROM utilisateur WHERE email = ?" ;
+        
+        Connection connexion = ConnexionBDD.getConnection();
+        PreparedStatement statement = connexion.prepareStatement(sql) ;
+        
+        statement.setString(1, email);
+        
+        ResultSet resultat = statement.executeQuery()  ;
+        
+       
+        if(resultat.next()) {
+            System.out.println("Utilisateur trouver");
+        }
+    }
+    
+    
 }

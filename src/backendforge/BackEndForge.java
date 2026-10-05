@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class BackEndForge {
 
   
-    public static void main(String[] args)  {
+    public static void main(String[] args) throws SQLException  {
         
         try {
             Connection connexion = ConnexionBDD.getConnection();   
@@ -39,7 +39,7 @@ try {
        System.out.println(utilisateur1.getAge()) ;
        System.out.println(utilisateur1.getSexe()) ;
 
-
+       UtilisateurRepository.chercherParEmail("jul@live.fr");
 
     }
     
