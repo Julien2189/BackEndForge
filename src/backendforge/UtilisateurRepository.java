@@ -48,14 +48,29 @@ public class UtilisateurRepository {
         PreparedStatement statement = connexion.prepareStatement(sql) ;
         
         statement.setString(1, email);
-        
         ResultSet resultat = statement.executeQuery()  ;
         
        
         if(resultat.next()) {
             System.out.println("Utilisateur trouver");
+            String emailTrouver = resultat.getString("email") ;
+            System.out.println(email);
+            String pseudo = resultat.getString("pseudo");
+            String sex = resultat.getString("sexe") ;
+            int age = resultat.getInt("age") ; 
+            int id = resultat.getInt("id") ;
+            System.out.println(id) ;
+
+            System.out.println(pseudo) ;
+            System.out.println(age) ;
+
         }
+        resultat.close();
+        statement.close();
+        connexion.close() ;
     }
+    
+    
     
     
 }

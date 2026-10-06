@@ -35,7 +35,7 @@ try {
 }
        System.out.println(utilisateur1.getId()) ;
        System.out.println(utilisateur1.getPseudo()) ;
-       System.out.println(utilisateur1.getEmail()) ;
+           System.out.println(utilisateur1.getEmail()) ;
        System.out.println(utilisateur1.getAge()) ;
        System.out.println(utilisateur1.getSexe()) ;
 
